@@ -1,0 +1,15 @@
+# Archivos generados por compilación LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.pdf
+#carpeta
+firmas/

@@ -1,0 +1,359 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{setspace} % Paquete para el espaciado
+\usepackage{longtable} % Para tablas largas
+\usepackage{array} % Para ajustar columnas
+\usepackage[skip=10pt]{caption} % Ajusta el valor de skip para más o menos espacio
+\usepackage{multirow} % Paquete necesario para usar \multirow
+
+
+% Cambia el espacio antes de los capítulos
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptername\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-10pt}{20pt} % Ajusta el valor de -20pt según lo que desees
+
+\newcommand{\tempChapterFormat}{
+	\titleformat{\chapter}[display]
+	{\normalfont\Large\bfseries\centering}
+	{Chapter \thechapter}
+	{20pt}
+	{\Large}
+}
+
+% Reestablecer al formato por defecto
+\newcommand{\defaultChapterFormat}{
+	\titleformat{\chapter}[display]
+	{\normalfont\huge\bfseries} % o el formato que tengas definido
+	{\chaptertitlename\ \thechapter}
+	{20pt}
+	{\Huge}
+}
+
+\usepackage[a4paper,top=2cm,left=2.5cm,right=2.5cm,bottom=2.5cm]{geometry}
+
+
+
+\title{ARVIVET - Integrated Veterinary Management System}
+\author{}
+\date{}
+
+\begin{document}
+	
+	
+	\begin{titlepage}
+		\centering % Espacio desde la parte superior
+		\textbf{ESCUELA SUPERIOR POLITÉCNICA DEL LITORAL}\\[0.5cm]
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\textwidth]{logo ESPOL.png}
+			\label{fig:logo ESPOL}
+		\end{figure}
+		% Título en letras grandes y en negrita
+		{\LARGE \textbf{FINAL SOFTWARE}\\[0.3cm] \textbf{SPECIFICATION}}\\[1.5cm]
+		
+		% Texto intermedio con estilo sutil
+		{\large \textit{for}}\\[1.5cm]
+		
+		% Nombre del proyecto
+		{\Huge \textbf{ARVIVET}}\\[1.5cm]
+		
+		% Sección de autores
+		\textit{by}\\[0.5cm]
+		{\Large
+			Noelia Saltos Hernandez\\
+			Dafne Ruiz Cazares\\
+			Jahir Díaz Cedeño\\[0.2cm]
+			Johnny Rodriguez Salinas
+		}\\[2cm]
+		
+		% Ubicación y fecha
+		{\large Guayaquil, November 16th, 2024}\\[1.5cm]
+		
+		% Nombre de la institución
+		
+		
+	\end{titlepage}
+	
+	
+	\tempChapterFormat 
+	\chapter*{Abstract}
+	
+	\addcontentsline{toc}{chapter}{Abstract}
+	This project focuses on developing an integrated management system for "ARVIVET," a veterinary center with two branches in Guayaquil, which faces operational challenges due to the manual handling of appointments and medical records. The proposal includes a web platform for veterinary staff and a mobile application for clients, facilitating appointment scheduling, medical history consultation, and enhanced communication between the clinic and pet owners. This digital system automates reminders, centralizes data in a unified database, and improves the user experience. By implementing this solution, "ARVIVET" will position itself as an innovative veterinary center capable of delivering higher-quality care and operational efficiency.
+	
+	
+	\chapter*{Authorship Declaration}
+	\addcontentsline{toc}{chapter}{Authorship Declaration}
+	
+	We, the undersigned, hereby declare that this Software Requirements Specification document for ARVIVET project has been created entirely by us as part of our academic and professional responsibilities. We confirm that we have actively and equitably contributed to all stages of project development, from requirements gathering to the creation of this documentation.
+	
+	This document represents our own analysis, design, and recommendations based on the identified needs for the development of the described software. We affirm that we have completed this work in an ethical and responsible manner, without plagiarism or improper use of third-party work. 
+	
+	We assume full responsibility for the content and quality of this document, and we commit to responding to any observations or requests for review necessary to ensure that the software requirements meet the established standards and expectations.
+	\\[0.5cm]
+	\begin{table}[H]
+		\centering
+		\small
+		\begin{tabular}{p{6cm} p{4cm}}
+			\hline
+			\textbf{Name} & \textbf{Signature} \\
+			\hline
+			\vspace{0.3cm} Noelia Saltos Hernandez & \vspace{0.02cm} \includegraphics[height=1cm]{firmas/firma_noelia.png} \\[0.2cm]
+			\hline
+			\vspace{0.3cm} Dafne Ruiz Cazares & \vspace{0.02cm} \includegraphics[height=1cm]{firmas/firma_dafne.png} \\[0.2cm]
+			\hline
+			\vspace{0.3cm} Jahir Díaz Cedeño & \vspace{0.04cm} \includegraphics[height=1cm]{firmas/firma_jahir.png} \\[0.2cm]
+			\hline
+			\vspace{0.3cm} Johnny Rodriguez Salinas & \vspace{0.02cm} \includegraphics[height=1cm]{firmas/firma_johnny.png} \\[0.2cm]
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	Guayaquil, \today
+	
+	\defaultChapterFormat
+	\tableofcontents
+	\listoftables
+	\listoffigures
+	
+	
+	\chapter{Project Planning and Risk Management}
+	\section{Risk Management}
+	
+	\begin{longtable}{|p{0.5cm}|p{3cm}|p{2cm}|p{2cm}|p{4cm}|p{4cm}|}
+		\hline
+		\textbf{ID} & \textbf{Risk Name} & \textbf{Probability of Occurrence} & \textbf{Level of Impact} & \textbf{Strategy} & \textbf{Action to be Taken} \\
+		\hline
+		1 & Lack of experienced resources & High & Serious Threat & Recruit quality personnel, provide training & Develop a training plan  \\
+		\hline
+		2 & Poorly defined requirements & Probable & Major Obstacle & Requirement engineering techniques, prototypes, evolutionary lifecycle & Conduct workshops for clear requirements, iterative prototyping \\
+		\hline
+		4 & Issues with external software resources & Probable & Major Obstacle & Contracting skills, benchmarking, inspection & Establish clear contracts, conduct benchmarks, and perform regular inspections \\
+		\hline
+		5 & Poor iterative development management & Medium & Major Obstacle & Project management training, time control & Implement strict time control and provide project management training \\
+		\hline
+		7 & Poor design leads to performance issues & Probable & Serious Threat & Simulation, benchmarking, prototyping & Perform simulations, iterative prototyping, and design reviews \\
+		\hline
+		8 & Poor reporting, risk management, and quality control & High & Serious Threat & Change control, software reuse, incremental development, project management training & Implement a robust change management process and incremental development \\
+		\hline
+		9 & Remote team location causes implementation issues & Probable & Major Obstacle & Video conferencing, project websites, team collaboration tools & Use video conferencing tools and enable remote collaboration \\
+		\hline
+		10 & Poor testing strategy causes system reliability issues & Probable & Serious Threat & Simulation, benchmarking, prototyping & Develop a comprehensive testing strategy, perform benchmarks, and simulate scenarios \\
+		\hline
+		\caption{Risk Management Table for ARVIVET \label{tab:arvivet_risk_management}}
+	\end{longtable}
+	
+	
+	\section{Product Backlog}
+	\begin{longtable}{|p{2cm}|p{8cm}|p{3cm}|p{3cm}|}
+		\hline
+		\textbf{ID} & \textbf{Product Backlog Item} & \textbf{Priority} & \textbf{Initial Estimate of Effort (weeks)} \\
+		\hline
+		MS-01 & As a client, I want to schedule, modify, or cancel appointments through the mobile app & High & 4 \\
+		\hline
+		WS-02 & As an administrator, I want to manage veterinary staff profiles, including creating, updating, and deleting accounts & High & 3 \\
+		\hline
+		MS-03 & As a client, I want to view the medical history of my pet in the app & Medium & 2 \\
+		\hline
+		WS-04 & As an administrator, I want to approve or reject payment proofs for appointments booked by clients & High & 3 \\
+		\hline
+		WS-05 & As a veterinarian, I want to register and update pets' medical records, including uploading images and documents & High & 4 \\
+		\hline
+		MS-06 & As a client, I want to receive notifications about upcoming appointments & Medium & 2 \\
+		\hline
+		WS-07 & As an administrator, I want to assign roles and configure working schedules for veterinary staff & Medium & 2 \\
+		\hline
+		MS-08 & As a client, I want to upload payment proofs for appointments paid via bank transfer & High & 3 \\
+		\hline
+		WS-09 & As an administrator, I want to track and monitor workload distribution among veterinary staff & Medium & 2 \\
+		\hline
+		MS-10 & As a client, I want to select a specialty when booking an appointment to ensure I get the right service & High & 3 \\
+		\hline
+		WS-11 & As an administrator, I want to access dashboards with detailed statistics about appointments and payments & Low & 2 \\
+		\hline
+		MS-12 & As a client, I want to manage my account information and update personal details in the app & Low & 2 \\
+		\hline
+		WS-13 & As a veterinarian, I want to view and manage my assigned appointments & Medium & 2 \\
+		\hline
+		\caption{Product Backlog for ARVIVET 
+			\label{tab:arvivet_product_backlog}}
+	\end{longtable}
+	
+	
+	\clearpage
+	
+	\section{Sprint Backlog}
+	This section provides an overview of the planned Sprint Backlogs for the project. Each sprint has a duration of 15 days, focusing on addressing client needs while optimizing workflows and ensuring high-quality deliverables.
+	
+	\subsection{Sprint 1}
+	
+	\begin{longtable}{|p{2cm}|p{4cm}|p{5cm}|p{3cm}|p{2cm}|} 
+		\hline
+		\multicolumn{5}{|c|}{\textbf{Sprint Backlog: Sprint 1}} \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Start Date: 01/03/2025}} & \multicolumn{3}{r|}{\textbf{Final Date: 14/03/2025}} \\
+		\hline
+		\textbf{ID} & \textbf{Product Backlog Item} & \textbf{Sprint Task} & \textbf{Volunteer} & \textbf{Initial Estimate of Effort (days)} \\
+		\hline
+		\multirow{4}{*}{MS-01} 
+		& \multirow{4}{4cm}{As a client, I want to schedule, modify, or cancel appointments through the mobile app.}
+		& Design and create database schema for appointment management & Jahir Díaz & 4 \\
+		\cline{3-5}
+		& & Develop backend logic for scheduling appointments & Jhonny Rodríguez & 3 \\
+		\cline{3-5}
+		& & Initial setup of API endpoints for managing appointments & Dafne Ruiz & 2 \\
+		\cline{3-5}
+		& & Conduct initial database tests for appointment management & Noelia Saltos & 2 \\
+		\hline
+		\multirow{3}{*}{WS-02}
+		& \multirow{3}{4cm}{As an administrator, I want to manage veterinary staff profiles, including creating, updating, and deleting accounts.}
+		& Design database schema for staff profile management & Jahir Díaz & 3 \\
+		\cline{3-5}
+		& & Develop basic logic for creating and updating staff profiles & Jhonny Rodríguez & 3 \\
+		\cline{3-5}
+		& & Setup initial UI for managing staff profiles & Dafne Ruiz & 4 \\
+		\hline
+		\caption{Sprint Backlog: Sprint 1 (01/03/2025 - 14/03/2025)}
+	\end{longtable}
+	
+	
+	\subsection{Sprint 2}
+	\begin{longtable}{|p{2cm}|p{4cm}|p{5cm}|p{3cm}|p{2cm}|} 
+		\hline
+		\multicolumn{5}{|c|}{\textbf{Sprint Backlog: Sprint 2}} \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Start Date: 15/03/2025}} & \multicolumn{3}{r|}{\textbf{Final Date: 28/03/2025}} \\
+		\hline
+		\textbf{ID} & \textbf{Product Backlog Item} & \textbf{Sprint Task} & \textbf{Volunteer} & \textbf{Initial Estimate of Effort (days)} \\
+		\hline
+		\multirow{3}{*}{MS-01} 
+		& \multirow{3}{4cm}{As a client, I want to schedule, modify, or cancel appointments through the mobile app.}
+		& Finalize UI for appointment scheduling and management & Dafne Ruiz & 4 \\
+		\cline{3-5}
+		& & Conduct integration tests for backend and UI & Noelia Saltos & 3 \\
+		\cline{3-5}
+		& & Fix bugs and ensure robustness in appointment functionality & Jhonny Rodríguez & 3 \\
+		\hline
+		\multirow{3}{*}{MS-03}
+		& \multirow{3}{4cm}{As a client, I want to view the medical history of my pet in the app.}
+		& Design database schema for storing medical history & Jahir Díaz & 4 \\
+		\cline{3-5}
+		& & Develop backend logic for retrieving and displaying medical history & Jhonny Rodríguez & 3 \\
+		\cline{3-5}
+		& & Create and test UI for viewing medical history & Dafne Ruiz & 3 \\
+		\hline
+		\caption{Sprint Backlog: Sprint 2 (15/03/2025 - 28/03/2025)}
+	\end{longtable}
+	
+	
+	\subsection{Sprint 3}
+	\begin{longtable}{|p{2cm}|p{4cm}|p{5cm}|p{3cm}|p{2cm}|} 
+		\hline
+		\multicolumn{5}{|c|}{\textbf{Sprint Backlog: Sprint 3}} \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Start Date: 29/03/2025}} & \multicolumn{3}{r|}{\textbf{Final Date: 11/04/2025}} \\
+		\hline
+		\textbf{ID} & \textbf{Product Backlog Item} & \textbf{Sprint Task} & \textbf{Volunteer} & \textbf{Initial Estimate of Effort (days)} \\
+		\hline
+		\multirow{3}{*}{WS-05} 
+		& \multirow{3}{4cm}{As a veterinarian, I want to register and update pets' medical records, including uploading images and documents.}
+		& Design and create database schema for storing medical records & Jahir Díaz & 4 \\
+		\cline{3-5}
+		& & Implement functionality for uploading and storing images & Dafne Ruiz & 4 \\
+		\cline{3-5}
+		& & Initial setup and testing of medical record management system & Jhonny Rodríguez & 2 \\
+		\hline
+		\multirow{3}{*}{WS-04} 
+		& \multirow{3}{4cm}{As an administrator, I want to approve or reject payment proofs for appointments booked by clients.}
+		& Develop backend logic for validating and approving payment proofs & Noelia Saltos & 4 \\
+		\cline{3-5}
+		& & Implement initial tests for payment proof validation system & Jhonny Rodríguez & 3 \\
+		\cline{3-5}
+		& & Conduct integration tests for backend and database interactions & Dafne Ruiz & 3 \\
+		\hline
+		\caption{Sprint Backlog: Sprint 3 (29/03/2025 - 11/04/2025)}
+	\end{longtable}
+	
+	
+	\subsection{Sprint 4}
+	\begin{longtable}{|p{2cm}|p{4cm}|p{5cm}|p{3cm}|p{2cm}|} 
+		\hline
+		\multicolumn{5}{|c|}{\textbf{Sprint Backlog: Sprint 4}} \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Start Date: 12/04/2025}} & \multicolumn{3}{r|}{\textbf{Final Date: 25/04/2025}} \\
+		\hline
+		\textbf{ID} & \textbf{Product Backlog Item} & \textbf{Sprint Task} & \textbf{Volunteer} & \textbf{Initial Estimate of Effort (days)} \\
+		\hline
+		\multirow{3}{*}{WS-05} 
+		& \multirow{3}{4cm}{As a veterinarian, I want to register and update pets' medical records, including uploading images and documents.}
+		& Develop backend logic for medical record updates & Jhonny Rodríguez & 4 \\
+		\cline{3-5}
+		& & Finalize UI for medical record management & Dafne Ruiz & 3 \\
+		\cline{3-5}
+		& & Conduct end-to-end tests for the medical record system & Noelia Saltos & 3 \\
+		\hline
+		\multirow{3}{*}{MS-06} 
+		& \multirow{3}{4cm}{As a client, I want to receive notifications about upcoming appointments.}
+		& Design notification system architecture & Jahir Díaz & 3 \\
+		\cline{3-5}
+		& & Implement notification triggers in the backend & Jhonny Rodríguez & 4 \\
+		\cline{3-5}
+		& & Test and refine notification delivery system & Dafne Ruiz & 3 \\
+		\hline
+		\caption{Sprint Backlog: Sprint 4 (12/04/2025 - 25/04/2025)}
+	\end{longtable}
+	
+	
+	\clearpage
+
+
+	
+	\chapter{Costumer's Certificate of Conformity}
+	\begin{figure}[h!]
+		\centering
+
+		\caption{Veterinarian States}
+		\label{fig:Acceptance Certificate}
+	\end{figure}
+	\clearpage
+	
+	\chapter{Individual Contributions}
+	
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|m{4cm}|m{10cm}|}
+			\hline
+			\textbf{Name} & \textbf{Sections} \\ \hline
+			Noelia Saltos & Documento en Latex, 8 Sequence diagram, state diagrams, risk management, scheduling, activity on arrow, sprint backlog, payment module in figma, and payment module in class diagrams. \\ \hline
+			Jahir Díaz & 10 Sequence diagram, web component prototype figma, deployment diagrams, components diagrams, medical history module in class diagram. \\ \hline
+			Johnny Rodriguez & 8 Sequence diagram, activity diagrams, web communication diagram, appointment module in class diagrams. \\ \hline
+			Dafne Ruiz & 6 Sequence diagram, object diagrams. \\ \hline
+		\end{tabular}
+		\caption{Contributions by Team Members}
+	\end{table}
+	
+	\chapter{Appendix}
+	
+	\section{ GitHub Repository}
+	You can find the repository of this Requirements here: \url{https://github.com/NoeSaltos/Arvivet-Validation}.
+	
+	\section{First Requirements Document}
+	You can find the requirements of this project here: \url{https://espolec-my.sharepoint.com/:b:/g/personal/noeasalt_espol_edu_ec/Ed0NmtB_ZC9Co-xO9tjMbwoB-0bg2pb_o1kOYDXVplHtdw?e=HQx1pu}.
+	
+	\section{Improved Figma}
+	You can find the Figma prototype of mobile module here: \url{https://www.figma.com/design/h4HEQHBFKPaTVIf6gib1Pm/ING_1?node-id=15-2&t=rbJnlS2WQBPPDD2T-1}.
+	\\
+	\\
+	You can find the Figma prototype of web module here: \url{https://www.figma.com/design/jvPR2d00XdKmStaXpARCXV/ING_1.1?node-id=0-1&t=D1A56bgJP7Dbi7w7-1  }.
+	
+	
+	
+	
+	
+\end{document}
